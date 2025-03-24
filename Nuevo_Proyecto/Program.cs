@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Nuevo_Proyecto.Data;
+using Nuevo_Proyecto.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +25,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
             maxRetryDelay: TimeSpan.FromSeconds(30),
             errorNumbersToAdd: null);
     }));
-//builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+ builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 
 var app = builder.Build();
 

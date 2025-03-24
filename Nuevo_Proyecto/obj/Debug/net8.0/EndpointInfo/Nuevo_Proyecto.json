@@ -1,0 +1,120 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Nuevo_Proyecto",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Person": {
+      "get": {
+        "tags": [
+          "Person"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Person"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Person"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Person"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Person": {
+        "required": [
+          "businessEntityID",
+          "emailPromotion",
+          "firstName",
+          "lastName",
+          "modifiedDate",
+          "nameStyle",
+          "personType",
+          "rowguid"
+        ],
+        "type": "object",
+        "properties": {
+          "businessEntityID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "personType": {
+            "type": "string",
+            "nullable": true
+          },
+          "nameStyle": {
+            "type": "boolean"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "middleName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "suffix": {
+            "type": "string",
+            "nullable": true
+          },
+          "emailPromotion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "additionalContactInfo": {
+            "type": "array",
+            "items": { },
+            "nullable": true
+          },
+          "demographics": {
+            "type": "array",
+            "items": { },
+            "nullable": true
+          },
+          "rowguid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "modifiedDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

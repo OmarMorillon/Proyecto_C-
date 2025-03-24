@@ -1,31 +1,36 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Xml;
 
 namespace Nuevo_Proyecto.Model
 {
     public class Person
     {
         [Key]
-        public required string BusinessEntityID { get; set; }
+        public required int BusinessEntityID { get; set; }
+
         public required string PersonType { get; set; }
-        public required string NameStyle { get; set; }
-        public string Title {  get; set; } = string.Empty;
+
+        public required bool NameStyle { get; set; }
+
+        public string? Title { get; set; }
+
         public required string FirstName { get; set; }
-        public string MiddleName {  get; set; } = string.Empty ;
+
+        public string? MiddleName { get; set; }
+
         public required string LastName { get; set; }
 
-        public string Suffix { get; set; } = string.Empty;
+        public string? Suffix { get; set; }
 
-        public required string EmailPromotion { get; set; }
+        public required int EmailPromotion { get; set; }
 
-        public string AdditionalContactInfo { get; set; } = string.Empty;
+        public XmlDocument? AdditionalContactInfo { get; set; }
 
-        public string Demographics { get; set;} = string.Empty;
+        public XmlDocument? Demographics { get; set; }
 
-        public required string rowguid { get; set; }
+        public required Guid rowguid { get; set; }
 
-        public required string ModifiedDate { get; set; }
-
-      
+        public required DateTime ModifiedDate { get; set; }
 
 
 

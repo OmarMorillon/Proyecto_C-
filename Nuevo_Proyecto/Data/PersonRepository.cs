@@ -17,5 +17,14 @@ namespace Nuevo_Proyecto.Data
         public async Task<Person> GetPersonByIDAsync(int id) => await _context.Person.FindAsync(id);
 
         public async Task<IEnumerable<Person>> GetPersonAsync() => await _context.Person.Take(100).ToListAsync();
+
+        //create
+        public async Task<Person> CreateCustomerAsync(Person person)
+        {
+            _context.Person.Add(person);
+            await _context.SaveChangesAsync();
+            return person;
+        }
+
     }
 }
