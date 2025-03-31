@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Nuevo_Proyecto.Interface;
 using Nuevo_Proyecto.Model;
 
@@ -38,22 +39,30 @@ namespace Nuevo_Proyecto.Controllers
             var createdPerson = await _personRepository.CreatePersonAsync(person);
             return CreatedAtAction(nameof(GetPerson), new { id = createdPerson.BusinessEntityID }, createdPerson);
         }
-
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePersonAsync(int id, Person person)
+        public async Task<IActionResult> UpdatePersonAsync(int id, [FromBody] Person person)
         {
-            if (id != person.BusinessEntityID)
+            try
             {
-                return BadRequest();
-            }
+                if (id != person.BusinessEntityID)
+                    return BadRequest("ID en URL no coincide con el cuerpo.");
 
-            var result = await _personRepository.UpdatePersonAsync(person);
-            if (!result)
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var result = await _personRepository.UpdatePersonAsync(person);
+                return result ? NoContent() : NotFound();
+            }
+            catch (DbUpdateException ex)
             {
-                return NotFound();
+                // Registra el error (usa ILogger en producción)
+                return StatusCode(500, $"Error al actualizar: {ex.InnerException?.Message}");
             }
-
-            return NoContent();
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error inesperado: {ex.Message}");
+            }
+        
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePerson(int id)

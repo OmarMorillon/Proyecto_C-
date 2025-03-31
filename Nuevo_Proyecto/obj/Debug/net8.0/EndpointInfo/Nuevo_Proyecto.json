@@ -194,68 +194,48 @@
   "components": {
     "schemas": {
       "Person": {
-        "required": [
-          "businessEntityID",
-          "emailPromotion",
-          "firstName",
-          "lastName",
-          "modifiedDate",
-          "nameStyle",
-          "personType",
-          "rowguid"
-        ],
         "type": "object",
         "properties": {
-          "businessEntityID": {
+          "BusinessEntityID": {
             "type": "integer",
             "format": "int32"
           },
-          "personType": {
+          "PersonType": {
             "type": "string",
             "nullable": true
           },
-          "nameStyle": {
+          "NameStyle": {
             "type": "boolean"
           },
-          "title": {
+          "Title": {
             "type": "string",
             "nullable": true
           },
-          "firstName": {
+          "FirstName": {
             "type": "string",
             "nullable": true
           },
-          "middleName": {
+          "MiddleName": {
             "type": "string",
             "nullable": true
           },
-          "lastName": {
+          "LastName": {
             "type": "string",
             "nullable": true
           },
-          "suffix": {
+          "Suffix": {
             "type": "string",
             "nullable": true
           },
-          "emailPromotion": {
+          "EmailPromotion": {
             "type": "integer",
             "format": "int32"
-          },
-          "additionalContactInfo": {
-            "type": "array",
-            "items": { },
-            "nullable": true
-          },
-          "demographics": {
-            "type": "array",
-            "items": { },
-            "nullable": true
           },
           "rowguid": {
             "type": "string",
             "format": "uuid"
           },
-          "modifiedDate": {
+          "ModifiedDate": {
             "type": "string",
             "format": "date-time"
           }
